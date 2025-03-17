@@ -5,13 +5,16 @@ const Env = require("#config/Env.js");
 const runningMode = Env.RUNNING_MODE || "standalone";
 const dbHost = runningMode === "docker" ? "db" : Env.DB_HOST || "localhost";
 const dbPort = Env.DB_PORT;
-const dbName = Env.DB_DATABASE;
-const dbUser = Env.DB_USER;
+const dbName ="Mana-Library";
+const dbUser = "";
+// const dbName = Env.DB_DATABASE;
+// const dbUser = Env.DB_USER;
 const dbPassword = Env.DB_PASSWORD;
 const retryDelay = Env.DB_RETRY_DELAY;
 const retryCount = Env.DB_RETRY_COUNT;
 
-const connectString = `mongodb://${dbUser}:${encodeURIComponent(dbPassword)}@${dbHost}:${dbPort}/${dbName}?authSource=admin`;
+const connectString = `mongodb://${encodeURIComponent(dbPassword)}@${dbHost}:${dbPort}/${dbName}?authSource=admin`;
+// const connectString = `mongodb://${dbUser}:${encodeURIComponent(dbPassword)}@${dbHost}:${dbPort}/${dbName}?authSource=admin`;
 
 class Database {
   constructor() {
